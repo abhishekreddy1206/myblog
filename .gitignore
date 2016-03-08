@@ -1,0 +1,9 @@
+*.pyc
+*.py~
+*.js~
+*_initial.py
+*_auto_*.py
+00*.py
+*.json
+email_info.py
+uploads/
