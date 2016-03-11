@@ -170,7 +170,7 @@ div {
 
 .fixed-panel {
   min-height: 500px;
-  max-height: 900px;
+  max-height: 700px;
   overflow-y: scroll;
   padding: 50px;
 }
