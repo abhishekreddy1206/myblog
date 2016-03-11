@@ -1,0 +1,47 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Abhishek's Blog</title>
+
+		<!-- Stylesheets -->
+
+		<link href="/static/blog/images/logo_blog.png" rel="icon" type="image/png/x-icon">
+		<link rel="stylesheet" href="/static/blog/js/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/static/blog/css/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="/static/blog/css/blog_style/blog_style.css">
+	</head>
+
+	<body class="container">
+		{% block navcontent %}
+		{% endblock %}
+	</body>
+
+	<footer class="navbar-default navbar-fixed-bottom">
+		<div class="text-center center-block">
+			<h4>Follow me here!</h4>
+			<a href="https://www.linkedin.com/profile/preview?locale=en_US&trk=prof-0-sb-preview-primary-button" target="_blank"><i id="social-linkedin" class="fa fa-linkedin-square fa-3x social"></i></a>
+			<a href="https://www.facebook.com/abhishekreddy1206" target="_blank"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+			<a href="https://twitter.com/abhishekyeruva" target="_blank"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+			<a href="https://plus.google.com/+AbhishekReddyYeruva/posts" target="_blank"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+			<a href="https://github.com/abhishekreddy1206" target="_blank"><i id="social-git" class="fa fa-github-square fa-3x social"></i></a>
+			<a href="https://www.pinterest.com/abhishekyeruva/" target="_blank"><i id="social-pin" class="fa fa-pinterest-square fa-3x social"></i></a>
+			<a href="https://www.instagram.com/abhishekreddy1206/" target="_blank"><i id="social-instagram" class="fa fa-instagram fa-3x social"></i></a>
+			<a href="mailto:abhishekreddy1206@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+			<br />
+		</div>
+	</footer>
+
+	<!-- scripts -->
+	<script src="/static/blog/js/jquery/dist/jquery.min.js"></script>
+	<script src="/static/blog/js/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="/static/blog/js/angular/angular.min.js"></script>
+	<script src="/static/blog/js/angular/angular-ui-bootstrap.js"></script>
+	<script src="/static/blog/js/angular/angular-resource.min.js"></script>
+	<script src="/static/blog/js/angular/angular-min-router.js"></script>
+
+</html>
