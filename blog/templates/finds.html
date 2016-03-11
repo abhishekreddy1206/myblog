@@ -2,9 +2,123 @@
 {% block bodycontent %}
 
 <div class="panel panel-default pages">
-	<div class="panel-heading legend">INTERESTING STUFF:</div>
+	<div class="panel-heading legend">INTERESTING STUFF</div>
 	<div class="panel-body fixed-panel">
-		
+
+		<div class="page-header">
+			<h3>Disk partitioning in ubuntu <small class="pull-right">Mon, 12th Dec 2011</small></h3>
+		</div>
+		<p>If you have been wondering what the best configuration for the partitions would be while installing ubuntu, here is what i found the most useful allocation.</p>
+		<p>The following allocations were used on a 1TB hard drive:</p>
+		<pre>
+			sda1 for /boot - 498 Mb
+			sda3 for swap - 4000 Mb
+			sda4 for /tmp - 5199 Mb
+			sda5 for /var - 5203 Mb
+			sda6 for / - 250001 Mb
+			sda7 for /home - 735298 Mb
+		</pre>
+		<p>There would still be some place left. You can use it on the partition depending on the type of tasks that the machine is mostly used for. For programmers, it would mostly be /tmp and /swap.</p>
+		<p>The first 3 partitions i.e. sda1, sda3, sda4 are set as the primary and the rest are set as logical. This is optional during the installation process.</p>
+		<p>After the installation, you can always check your partitions using the 'df -h' command from the terminal.</p>
+
+		<div class="page-header">
+			<h3>Insert junk data into MySQL using python <small class="pull-right">Fri, 27th Jan 2012</small></h3>
+		</div>
+		<p>I had a class on databses and for my project, I had to get a lot of data online. Instead, I came up with a script to insert 1000's of junk records into a MySql database table. Here is a script to enter users into a table.</p>
+		<pre>
+	import random as rd
+	import MySQLdb
+	alphabet = 'a1234567890bcdefghijklmnopqrstuvwxyz'
+	alpha = 'qwertyuiopasdfghjklzxcvbnm'
+	deptid = '0123456789qwertyuiopasdfghjklzxcvbnm'
+	floor = '12345'
+	rights = 'RWE'
+	banner='1234567890'
+	def stri(k):
+
+	  P = []
+	  n,d=0,0
+	  s,f,g,h,a,b,c='','','','','','',''
+
+	  for i in xrange(k):
+	    P.append([])
+	    for l in xrange(1):
+	      #for j in range(1):
+	        for m in rd.sample(banner,9):
+	          h+=m
+	        P[i].append(h)
+
+	        for x in rd.sample(alpha,10):
+	          s+=x
+	        P[i].append(s)
+	        
+	        for m in rd.sample(alphabet,20):
+	          g+=m
+	        P[i].append(g)
+
+	        for x in rd.sample(alphabet,8):
+	          f+=x
+	        P[i].append(f)
+
+	        for m in rd.sample(alphabet,8):
+	          a+=m
+	        P[i].append(a)
+
+	        for y in rd.sample(rights,1):
+	          b+=y
+	        P[i].append(b)
+
+	        for z in rd.sample(deptid,6):
+	          c+=z
+	        P[i].append(c)
+	        
+	        s,f,g,h,a,b,c='','','','','','',''
+	        
+	  return P
+
+	t=stri(500)
+	print t
+
+
+	def sql(t):
+	  db=MySQLdb.connect("localhost","root","","cs564_abhishek")
+	  c=db.cursor()
+	  at=tuple(t)
+	  print at
+	  sql="""INSERT INTO USER(BANNERID,NAME,ADDRESS,USERNAME,PASSWORD,ACCESSRIGHTS,DEPTID) VALUES (%s, %s, %s, %s, %s, %s, %s)"""
+	  c.executemany(sql,at)
+	  db.commit()
+	sql(t)
+		</pre>
+
+		<div class="page-header">
+			<h3>Rerouting IP Addresses <small class="pull-right">Wed, 18th July 2012</small></h3>
+		</div>
+		<p>You can edit /etc/hosts to have DNS queries resolve to IP addresses of your choosing. But what if we want to reroute IP addresses to other IP addresses? This is possible by creating static IP routes and by creating a TUN/TAP interface in the server to which we want to reroute the IP address. We will assume that the server is running a debian variant of linux but make no assumptions about the OS of the machine on which we want to reroute the IP.</p>
+		<p>First we need to setup the linux server to which we want to route the IP address by creating a TUN/TAP interface by typing this in the terminal:</p>
+		<pre>
+			sudo apt-get install uml-utilities
+			sudo tunctl -u root -t tap0
+		</pre>
+		<p>This creates a virtual network interfaceto which we can assign an arbitrary IP address.</p>
+		<p>In a text editor, edit /etc/network/interfaces and add:</p>
+		<pre>
+			auto tap0
+			iface tap0 inet static
+			address 198.31.193.211
+			netmask 255.255.255.0
+		</pre>
+		<p>... where 198.31.193.211 is the IP address that we want to reroute.</p>
+		<p>To make sure the TUN/TAP interface is up with our static address, we type:</p>
+		<pre>
+			sudo ifup tap0
+		</pre>
+		<p>Now on the machine that we want to reroute 198.31.193.211, type in a linux/OSX terminal or windows console:</p>
+		<pre>
+		route add 198.31.193.211 ask 255.255.255.255 192.168.99.1
+		</pre>
+		<p>... where 192.168.99.1 is the IP address of the server to which we want to reroute 198.31.193.211. This static route isn't persistent and will be lost on reboot.</p>
 	</div>
 </div>
 
