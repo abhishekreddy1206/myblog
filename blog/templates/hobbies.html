@@ -2,9 +2,55 @@
 {% block bodycontent %}
 
 <div class="panel panel-default pages">
-	<div class="panel-heading legend">HOBBIES:</div>
+	<div class="panel-heading legend">HOBBIES</div>
 	<div class="panel-body fixed-panel">
-		
+		<p>One of my Hobbies <span class="fa fa-smile-o"></span></p>
+
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="4"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active CarouselImg">
+					<img class="CarouselImg" src="/static/blog/images/paintings/amitabh.jpg" alt="...">
+				</div>
+				<div class="item CarouselImg">
+					<img class="CarouselImg" src="/static/blog/images/paintings/goku.jpg" alt="...">
+				</div>
+				<div class="item CarouselImg">
+					<img class="CarouselImg" src="/static/blog/images/paintings/shear.jpg" alt="...">
+				</div>
+				<div class="item CarouselImg">
+					<img class="CarouselImg" src="/static/blog/images/paintings/waterfall.jpg" alt="...">
+				</div>
+				<div class="item CarouselImg">
+					<img class="CarouselImg" src="/static/blog/images/paintings/zebra.jpg" alt="...">
+				</div>
+			</div>
+
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+		<br/><br/><br/>
+		<p>Tennis is also my passion <span class="fa fa-smile-o"></span></p>
+		<div class="CarouselImg">
+			<img class="CarouselImg" src="/static/blog/images/tennis.jpg" alt="...">
+		</div>
+
 	</div>
 </div>
 

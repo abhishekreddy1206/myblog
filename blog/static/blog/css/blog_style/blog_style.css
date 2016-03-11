@@ -174,3 +174,9 @@ div {
   overflow-y: scroll;
   padding: 50px;
 }
+
+.CarouselImg img {
+  width: 100%;
+  height: 500px;
+  max-height: 500px;
+}
