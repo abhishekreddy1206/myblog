@@ -20,3 +20,6 @@ class HobbiesView(TemplateView):
 
 class ContactView(TemplateView):
     template_name = "contact.html"
+
+class EducationView(TemplateView):
+    template_name = "education.html"
