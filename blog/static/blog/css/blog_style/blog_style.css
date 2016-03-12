@@ -3,7 +3,16 @@ body {
 }
 
 div {
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
 }
 
 /* Profile container */
@@ -172,7 +181,18 @@ div {
   min-height: 500px;
   max-height: 700px;
   overflow-y: scroll;
-  padding: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
+}
+
+.fixed-panel-skill {
+  min-height: 300px;
+  max-height: 400px;
+  overflow-y: scroll;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 50px;
 }
 
 .CarouselImg img {
