@@ -6,6 +6,68 @@
 	<div class="panel-body fixed-panel">
 
 		<div class="page-header">
+			<h3>Dynamic JSON display in table <small class="pull-right">Wed, 6th May 2015</small></h3>
+		</div>
+		<p>I had to display a JSON that changed constantly with different headers and data. So usong Angular JS, this was taken care of using the following piece of code.</p>
+		{% verbatim %}
+		<pre>
+	&lt;thead&gt;
+		&lt;tr&gt;
+			&lt;th ng-repeat="(header, value) in resultData[0]"&gt;
+				{{header}}
+			&lt;/th&gt;
+		&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+		&lt;tr ng-repeat="row in resultData"&gt;
+			&lt;td ng-repeat="cell in row"&gt;
+				{{cell}}
+			&lt;/td&gt;
+		&lt;/tr&gt;
+	&lt;/tbody&gt;
+		</pre>
+		{% endverbatim %}
+
+		<div class="page-header">
+			<h3>Back-up data at regular intervals <small class="pull-right">Fri, 27th July 2012</small></h3>
+		</div>
+		<p>Usually I use <i>crontab</i> for backing up data at regular intervals.</p>
+		<pre>
+# /etc/crontab: system-wide crontab
+# Unlike any other crontab you don have to run 'crontab'
+# command to install the new version when you edit this file
+# and files in /etc/cron.d. These files also have username fields.
+# that none of the other crontabs do.
+
+SHELL = /bin/sh
+PATH = /usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+# m h dom mon dow user command
+17 **** root cd / && run-parts --report /etc/cron.hourly
+25 6*** root test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+47 6**7 root test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+52 61** root test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+#
+		</pre>
+		<p>Then you can make a new script which would actually perform the copy function. Here is a sample shell script:</p>
+		<pre>
+echo "Started BAckup on 'date'"
+varCheck = `mount | grep "/BACKUP_raid"`
+if [ $(#varCheck) == 0 ]
+then
+echo "BACKUP disc is not mounted: backup failed" 1>&2
+
+else
+time rsync -avuzbIH you/source/directory/* /BACKUP_directory/.
+fi
+
+echo "DONE 'date'"
+		</pre>
+		<p>You can also edit your fstab to add the UUID's of your backup-drives.</p>
+
+		<hr>
+
+		<div class="page-header">
 			<h3>Disk partitioning in ubuntu <small class="pull-right">Mon, 12th Dec 2011</small></h3>
 		</div>
 		<p>If you have been wondering what the best configuration for the partitions would be while installing ubuntu, here is what i found the most useful allocation.</p>
